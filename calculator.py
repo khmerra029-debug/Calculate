@@ -51,7 +51,7 @@ class RoundButton(tk.Canvas):
                          bg=BG, highlightthickness=0, **kw)
         self._bg, self._fg, self._hover = bg, fg, hover
         self._cmd = command
-        self._w, self._h, self._r = width, height, radius
+        self._width, self._height, self._radius = width, height, radius
 
         self._rect = rounded_rect(self, 2, 2, width-2, height-2, radius,
                                   fill=bg, outline="")
@@ -129,19 +129,19 @@ class Calculator(tk.Tk):
         # Expression label (small, top)
         self._expr_var = tk.StringVar(value="")
         tk.Label(disp, textvariable=self._expr_var, bg=DISPLAY_BG,
-                 fg=EXPR_FG, font=self.f_expr, anchor="e",
-                 padx=16, pady=(12, 0)).pack(fill="x")
+                 fg=EXPR_FG, font=self.f_expr, anchor="e"
+                 ).pack(fill="x", padx=16, pady=(12, 0))
 
         # Result label (big, bottom)
         self._result_var = tk.StringVar(value="0")
         tk.Label(disp, textvariable=self._result_var, bg=DISPLAY_BG,
-                 fg=DISPLAY_FG, font=self.f_result, anchor="e",
-                 padx=16, pady=(4, 16)).pack(fill="x")
+                 fg=DISPLAY_FG, font=self.f_result, anchor="e"
+                 ).pack(fill="x", padx=16, pady=(4, 16))
 
     # ── Button grid ───────────────────────────────────────────────────────────
     def _build_buttons(self):
-        grid = tk.Frame(self, bg=BG, padx=PAD, pady=(0, PAD))
-        grid.pack()
+        grid = tk.Frame(self, bg=BG)
+        grid.pack(padx=PAD, pady=(0, PAD))
 
         BW, BH = 76, 72   # button width / height
         SP = 8             # spacing
